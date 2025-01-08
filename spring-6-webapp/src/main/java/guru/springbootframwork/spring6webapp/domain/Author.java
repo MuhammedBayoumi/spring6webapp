@@ -12,7 +12,7 @@ public class Author {
     private long id;
     private String firstName;
     private String lastName;
-    @ManyToMany (mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
     public Set<Book> getBooks() {
@@ -45,5 +45,27 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return getId() == author.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(getId());
     }
 }
