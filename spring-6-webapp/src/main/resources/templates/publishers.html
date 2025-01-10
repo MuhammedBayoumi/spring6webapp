@@ -1,0 +1,23 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringFramwork</title>
+</head>
+<body>
+<h1>publishers List</h1>
+<table style="width:80%" border="1"
+       class = "table table-striped table-responsive-md">
+    <tr>
+        <th>Id</th>
+        <th>publisherName</th>
+        <th>address</th>
+    </tr>
+    <tr th:each="publisher  : ${publisher}">
+        <td th:text="${publisher.id}"></td>
+        <td th:text="${publisher.publisherName}"></td>
+        <td th:text="${publisher.address}"></td>
+    </tr>
+</table>
+</body>
+</html>
