@@ -3,17 +3,21 @@ package guru.springbootframwork.spring6webapp.domain;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq_generator")
+    @SequenceGenerator(name = "author_seq_generator", sequenceName = "author_seq", allocationSize = 1)
+
     private long id;
     private String firstName;
     private String lastName;
+
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books= new HashSet<>();
 
     public Set<Book> getBooks() {
         return books;
